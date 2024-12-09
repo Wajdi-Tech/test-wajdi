@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../models/post.service';
 
 @Component({
   selector: 'app-post-list',
@@ -12,7 +12,10 @@ export class PostListComponent {
   posts:any[]=[]
   constructor(private postservice:PostService){}
    
-    ngOnInit(): void{this.posts=this.postservice.getPosts()}
+    ngOnInit(): void{this.postservice.getPosts().subscribe((data)=>{
+    
+      this.posts=data
+    })}
     
 
 }
